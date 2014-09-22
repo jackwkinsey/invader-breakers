@@ -3,9 +3,30 @@
     <head>
         <meta charset="utf-8"/>
         <title>Invader Breakers</title>
-        <script type="text/javascript" src="js/phaser.min.js"></script>
     </head>
     <body>
-        Hello, this is a test.
+        <div id="gameContainer"></div>
+        
+        <script type="text/javascript" src="src/phaser.min.js"></script>
+        <script type="text/javascript" src="src/Boot.js"></script>
+        <script type="text/javascript" src="src/Preloader.js"></script>
+        <script type="text/javascript" src="src/MainMenu.js"></script>
+        <script type="text/javascript" src="src/Game.js"></script>
+        <script type="text/javascript">
+            window.onload = function () {
+                
+                // Initialize Phaser
+                var game = new Phaser.Game(480, 720, Phaser.AUTO, 'gameContainer');
+                
+                // Add game states
+                game.state.add('Boot', Invdr.Boot);
+                game.state.add('Preloader', Invdr.Preloader);
+                game.state.add('MainMenu', Invdr.MainMenu);
+                game.state.add('Game', Invdr.Game);
+                
+                // Start the Boot state.
+                game.state.start('Boot');
+            }
+        </script>
     </body>
 </html>
